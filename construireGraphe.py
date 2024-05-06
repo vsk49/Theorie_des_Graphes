@@ -1,6 +1,7 @@
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
+import genererMatrice as gm
 
 def estSymetrique(matrice):
     # verifier si une matrice est carree
@@ -25,7 +26,7 @@ def construireGraphe(matrice):
                 G.add_edge(i, j, weight=matrice[i][j])
                 
     # Dessin du graphe orienté pondéré
-    positions = nx.spring_layout(G) 
+    positions = nx.spring_layout(G)
     nx.draw(G, positions, with_labels=True)
 
     # Récuperation les poids des arretes
@@ -34,12 +35,9 @@ def construireGraphe(matrice):
     nx.draw_networkx_edge_labels(G, positions, edge_labels=poids)
 
     # Affichage du graphe dessiné
-    plt.show()      
+    plt.show()   
+    
+     
 
-M = np.array([[1, 0, 1, 1], 
-              [1, 1, 0, 1], 
-              [0, 1, 0, 1], 
-              [0, 0, 1, 0]])
-
-construireGraphe(M)
-            
+M = gm.graphe(5, 0, 20)
+construireGraphe(M)         

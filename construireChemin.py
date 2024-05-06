@@ -2,6 +2,7 @@ import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 import construireGraphe as cg
+import genererMatrice as gm
 
 def cheminExiste(matrice, chemin):
     # verifier si ce chemin existe dans la matrice
@@ -37,9 +38,5 @@ def construireChemin(matrice, chemin):
 
         plt.show()
         
-M = np.array([[1, 0, 1, 1], 
-              [1, 1, 0, 1], 
-              [0, 1, 0, 1], 
-              [0, 0, 1, 0]])
-
+M = gm.graphe(5, 0, 20)
 construireChemin(M, np.array([0, 2, 1, 3]))
