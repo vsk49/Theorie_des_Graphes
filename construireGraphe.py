@@ -1,5 +1,6 @@
-import networkx as nx
 import numpy as np
+import networkx as nx
+import matplotlib.pyplot as plt
 
 def estSymetrique(matrice):
     # verifier si une matrice est carree
@@ -18,51 +19,27 @@ def construireGraphe(matrice):
     else:
         G = nx.DiGraph()
         
-    for sommets in range(len(matrice)):
-        G.add_node(sommets)
-        
     for i in range(len(matrice)):
         for j in range(len(matrice[i])):
             if matrice[i][j] == 1:
-                G.add_edge(i, j)
+                G.add_edge(i, j, weight=1)
                 
-    nx.draw_networkx(G, node_color='blue', node_size=500, edge_color='red', 
-                     with_labels=True, font_size=10, font_color='white')
-    
-    
-    
-    
-def cheminExiste(matrice, chemin):
-    # verifier si ce chemin existe dans la matrice
-    for i in range(len(chemin) - 1):
-        if matrice[chemin[i]][chemin[i + 1]] != 1:
-            return False
-    return True
-    
-def construireChemin(matrice, chemin):
-    if estSymetrique(matrice):
-        G = nx.Graph()
-    else:
-        G = nx.DiGraph()
-        
-    for sommets in range(len(matrice)):
-        G.add_node(sommets)
-        
-    for i in range(len(matrice)):
-        for j in range(len(matrice[i])):
-            if matrice[i][j] == 1:
-                G.add_edge(i, j)
-                
-    nx.draw_networkx(G, node_color='blue', node_size=500, edge_color='red', 
-                     with_labels=True, font_size=10, font_color='white')
-    
-    
+    # Dessin du graphe orienté pondéré
+    positions = nx.spring_layout(G) 
+    nx.draw(G, positions, with_labels=True)
+
+    # Récuperation les poids des arretes
+    poids = nx.get_edge_attributes(G, "weight")  
+    # Ajout des libelles sur le graphe
+    nx.draw_networkx_edge_labels(G, positions, edge_labels=poids)
+
+    # Affichage du graphe dessiné
+    plt.show()      
 
 M = np.array([[1, 0, 1, 1], 
               [1, 1, 0, 1], 
               [0, 1, 0, 1], 
               [0, 0, 1, 0]])
 
-# construireGraphe(M)
-construireChemin(M, np.array([0, 2, 1, 3]))
+construireGraphe(M)
             
