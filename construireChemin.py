@@ -19,8 +19,8 @@ def construireChemin(matrice, chemin):
         
     for i in range(len(matrice)):
         for j in range(len(matrice[i])):
-            if matrice[i][j] == 1:
-                G.add_edge(i, j, weight=1)
+            if matrice[i][j] > 0:
+                G.add_edge(i, j, weight=matrice[i][j])
                 
     positions = nx.spring_layout(G) 
     nx.draw(G, positions, with_labels=True)
@@ -42,4 +42,4 @@ M = np.array([[1, 0, 1, 1],
               [0, 1, 0, 1], 
               [0, 0, 1, 0]])
 
-construireChemin(M, np.array([0, 1, 2, 3]))
+construireChemin(M, np.array([0, 2, 1, 3]))
