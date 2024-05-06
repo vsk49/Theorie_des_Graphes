@@ -1,5 +1,12 @@
 import networkx as nx
+import numpy as np
+import matplotlib.pyplot as plt
 
-graph = nx.DiGraph()
-graph.add_edges_from([("root", "a"), ("a", "b"), ("a", "e"), ("b", "c"), ("b", "d"), ("d", "e")])
-print(graph.in_edges("e")) # => [('a', 'e'), ('d', 'e')]
+def construireGraphe(M):
+    G = nx.DiGraph()
+    for sommets in range(1, len(M) + 1):
+        G.add_node(str(sommets))
+        
+    for i in M:
+        for j in M[i]:
+            
