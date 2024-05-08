@@ -1,4 +1,3 @@
-import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 import genererMatrice as gm
@@ -26,17 +25,19 @@ def construireGraphe(matrice):
                 G.add_edge(i, j, weight=matrice[i][j])
                 
     # Dessin du graphe orienté pondéré
-    nx.draw(G, nx.spring_layout(G), with_labels=True)
+    positions = nx.spring_layout(G) 
+    print(positions)           
+    nx.draw(G, positions, with_labels=True)
 
     # Récuperation les poids des arretes
     poids = nx.get_edge_attributes(G, "weight")  
     # Ajout des libelles sur le graphe
-    nx.draw_networkx_edge_labels(G, nx.spring_layout(G), edge_labels=poids)
+    nx.draw_networkx_edge_labels(G, positions, edge_labels=poids)
 
     # Affichage du graphe dessiné
     plt.show()   
     
      
 
-M = gm.graphe(5, 0, 20)
+M = gm.graphe(5, 1, 20)
 construireGraphe(M)         

@@ -1,8 +1,8 @@
-import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 import construireGraphe as cg
 import genererMatrice as gm
+from algosCheminPlusCourt import Dijkstra
 
 def cheminExiste(matrice, chemin):
     # verifier si ce chemin existe dans la matrice
@@ -39,4 +39,4 @@ def construireChemin(matrice, chemin):
         plt.show()
         
 M = gm.graphe(5, 0, 20)
-construireChemin(M, np.array([0, 2, 1, 3]))
+construireChemin(M, Dijkstra(M, 0))
