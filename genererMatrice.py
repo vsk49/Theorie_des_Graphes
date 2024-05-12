@@ -43,8 +43,8 @@ def graphe2(n, p, a, b):
     return M
 
 # EXEMPLE / TEST FONCTION
-print("Graphe 1")
-print(graphe(6, 1, 20))
-print("Graphe 2")
-print(graphe2(6, 0.4, 1, 20))  
+# print("Graphe 1")
+# print(graphe(6, 1, 20))
+# print("Graphe 2")
+# print(graphe2(6, 0.4, 1, 20))  
 # Utilisation d'une proportion de 40% de flèches

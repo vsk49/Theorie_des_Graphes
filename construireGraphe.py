@@ -25,7 +25,7 @@ def construireGraphe(matrice):
                 G.add_edge(i, j, weight=matrice[i][j])
                 
     # Dessin du graphe orienté pondéré
-    positions = nx.spring_layout(G) 
+    positions = nx.spring_layout(G)
     print(positions)           
     nx.draw(G, positions, with_labels=True)
 
@@ -37,7 +37,6 @@ def construireGraphe(matrice):
     # Affichage du graphe dessiné
     plt.show()   
     
-     
-
+# Test de la fonction construireGraphe
 M = gm.graphe(5, 1, 20)
-construireGraphe(M)         
+construireGraphe(M)   
