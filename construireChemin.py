@@ -7,7 +7,7 @@ from algosCheminPlusCourt import Dijkstra
 def cheminExiste(matrice, chemin):
     # verifier si ce chemin existe dans la matrice
     for i in range(len(chemin) - 1):
-        if matrice[chemin[i]][chemin[i + 1]] != 1:
+        if matrice[chemin[i]][chemin[i + 1]] < 1:
             return False
     return True
 
