@@ -1,5 +1,5 @@
 import numpy as np
-import bellmanford as bf
+import bellmanFordVariants as bf
 
 def Dijkstra(M, d):
 	distances = {v : np.inf for v in range(len(M))}
@@ -40,17 +40,17 @@ def Dijkstra(M, d):
 def poids(u, v, M):
     return M[u][v]
 
-def BellmanFord(M, d, order='random'):
+def BellmanFord(M, d, ordre='hasard'):
     dist = {v : np.inf for v in range(len(M))}
     dist[d] = 0
     pred = {v : -1 for v in range(len(M))}
 
-    if order == 'random':
-        edges = bm.hasard(M)
-    elif order == 'breadth':
-        edges = bm.parcour_largeur(M, d)
-    elif order == 'depth':
-        edges = bm.parcour_profondeur(M, d)
+    if ordre == 'hasard':
+        edges = bf.hasard(M)
+    elif ordre == 'largeur':
+        edges = bf.parcour_largeur(M, d)
+    elif ordre == 'profondeur':
+        edges = bf.parcour_profondeur(M, d)
 
     # Iterations pour la mise-a-jour des distances
     iterations = 0
