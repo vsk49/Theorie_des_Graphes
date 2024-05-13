@@ -2,12 +2,17 @@ import numpy as np
 import bellmanFordVariants as bf
 
 def Dijkstra(M, d):
+    # creation d'un dictionnaire pour stocker les sommets et leurs distances
 	dist = {v : np.inf for v in range(len(M))}
 	dist[d] = 0
+	# creation d'un dictionnaire pour stocker les sommets et leurs predecesseurs
 	pred = {v : -1 for v in range(len(M))}
+	# creation d'une liste pour stocker les sommets visités
 	sommetsVisites = []
 
+	# la boucle principale
 	while len(sommetsVisites) < len(M):
+		# trouver le sommet u non visité avec la distance minimale
 		u = -1
 		sMin = np.inf
 		for i in range(len(M)):
@@ -18,14 +23,17 @@ def Dijkstra(M, d):
 		if u == -1:  
 			break
 
+		# marquer u comme visité
 		sommetsVisites.append(u)
 
+		# mettre à jour les distances des sommets non visités
 		for v in range(len(M)):
 			if v not in sommetsVisites and M[u][v] > 0:
 				if dist[u] + M[u][v] < dist[v]:
 					dist[v] = dist[u] + M[u][v]
 					pred[v] = u
 
+	# construire les résultats
 	cheminTrouve = {}
 	for s in range(len(M)):
 		if s != d:
@@ -39,7 +47,7 @@ def Dijkstra(M, d):
 			
 				cheminTrouve[s] = (dist[s], itineraire)
 			else:
-				cheminTrouve[s] = "sommet non joignable à d par un chemin dans le graphe G"
+				cheminTrouve[s] = "sommet non joignable à d par un chemin dans le graphe."
 
 	return cheminTrouve
 
