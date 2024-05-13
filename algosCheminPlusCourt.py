@@ -110,6 +110,7 @@ def reconstruire_chemin(pred, départ, final):
     return chemin
 
 # EXEMPLE / TEST FONCTION
+"""
 M = [[0, 0, 5, 2, 3], 
      [1, 0, 0, 0, 0], 
      [0, 0, 0, 0, 3], 
@@ -119,3 +120,4 @@ print(Dijkstra(M, 0))
 print(BellmanFord(M, 0, 'largeur'))
 print(BellmanFord(M, 0, 'profondeur'))
 print(BellmanFord(M, 0, 'hasard'))
+"""
