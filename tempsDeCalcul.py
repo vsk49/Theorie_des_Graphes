@@ -1,7 +1,6 @@
 import genererMatrice as gm
 import algosCheminPlusCourt as acpc
 import matplotlib.pyplot as plt
-import numpy as np
 import time
 
 # retourne le temps de calcul de l'algorithme de Dijkstra
@@ -26,10 +25,10 @@ def TempsBF(n, ordre='hasard'):
     
 
 # Test de la fonction TempsDij
-# print(TempsDij(100))
-# print(TempsBF(100, 'largeur'))
-# print(TempsBF(100, 'profondeur'))
-# print(TempsBF(100, 'hasard'))
+print(TempsDij(100))
+print(TempsBF(100, 'largeur'))
+print(TempsBF(100, 'profondeur'))
+print(TempsBF(100, 'hasard'))
 
 # Tracer les courbes de temps de calcul
 def tracerCourbes():
