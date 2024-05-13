@@ -39,5 +39,9 @@ def construireGraphe(matrice):
     
 # Test de la fonction construireGraphe
 M = gm.graphe(5, 1, 20)
-print(M)
-construireGraphe(M)   
+M1 = [[0, 1, 2, 3, 4], 
+      [1, 0, 5, 6, 7], 
+      [2, 5, 0, 8, 9], 
+      [3, 6, 8, 0, 10], 
+      [4, 7, 9, 10, 0]]
+construireGraphe(M1)   
