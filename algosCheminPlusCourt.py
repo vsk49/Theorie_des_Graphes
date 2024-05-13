@@ -1,4 +1,5 @@
 import numpy as np
+import bellmanford as bf
 
 def Dijkstra(M, d):
 	distances = {v : np.inf for v in range(len(M))}
@@ -39,16 +40,32 @@ def Dijkstra(M, d):
 def poids(u, v, M):
     return M[u][v]
 
-def BellmanFord(M, d):
+def BellmanFord(M, d, order='random'):
     dist = {v : np.inf for v in range(len(M))}
     dist[d] = 0
     pred = {v : -1 for v in range(len(M))}
 
+    if order == 'random':
+        edges = bm.hasard(M)
+    elif order == 'breadth':
+        edges = bm.parcour_largeur(M, d)
+    elif order == 'depth':
+        edges = bm.parcour_profondeur(M, d)
+
     # Iterations pour la mise-a-jour des distances
-    for i in range(len(M)):
-        if not mettre_à_jour_distances(M, dist, pred):
-            # Si aucune mise-a-jour n'est effectuée, on peut sortir
+    iterations = 0
+    for _ in range(len(M)):
+        modification = False
+        for u, v in edges:
+            if dist[u] != np.inf and dist[u] + M[u][v] < dist[v]:
+                dist[v] = dist[u] + M[u][v]
+                pred[v] = u
+                modification = True
+        iterations += 1
+        if not modification:
             break 
+
+    print(f"Number of iterations: {iterations}")
 
     # Verification des cycles poids negatifs
     if cycle_poids_négatif(M, dist):
