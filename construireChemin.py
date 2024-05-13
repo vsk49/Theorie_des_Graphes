@@ -42,8 +42,8 @@ def construireChemin(matrice, chemin: list):
         plt.show()
         
 M = [[0, 0, 5, 2, 3], 
-      [1, 0, 0, 0, 0], 
-      [0, 0, 0, 0, 0], 
-      [0, 0, 0, 0, 4], 
-      [0, 3, 0, 0, 2]]
-construireChemin(M, Dijkstra(M, 0))
+     [1, 0, 0, 0, 0], 
+     [0, 0, 0, 0, 3], 
+     [0, 0, 0, 0, 4], 
+     [0, 3, 0, 0, 2]]
+construireChemin(M, [0, 2, 4, 1, 0])

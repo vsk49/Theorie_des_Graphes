@@ -40,52 +40,54 @@ def poids(u, v, M):
     return M[u][v]
 
 def BellmanFord(M, d):
-    distances = {v : np.inf for v in range(len(M))}
-    distances[d] = 0
-    predecesseurs = {v : -1 for v in range(len(M))}
+    dist = {v : np.inf for v in range(len(M))}
+    dist[d] = 0
+    pred = {v : -1 for v in range(len(M))}
 
-    # Iterations to update distances
+    # Iterations pour la mise-a-jour des distances
     for i in range(len(M)):
-        if not mettre_à_jour_distances(M, distances, predecesseurs):
-            break # No modification in the last round
+        if not mettre_à_jour_distances(M, dist, pred):
+            # Si aucune mise-a-jour n'est effectuée, on peut sortir
+            break 
 
-    # Checking for negative weight cycles
-    if cycle_poids_négatif(M, distances):
-        print("Negative weight cycle detected")
+    # Verification des cycles poids negatifs
+    if cycle_poids_négatif(M, dist):
+        print("Cycle poids negatif detecte")
 
-    # Constructing results
+    # construire les results
     résultats = {}
     for s in range(len(M)):
-        if distances[s] == np.inf:
-            résultats[s] = "No path from d to s"
+        if dist[s] == np.inf:
+            résultats[s] = "Pas de chemin de d vers s"
         else:
-            chemin = reconstruire_chemin(predecesseurs, d, s)
-            résultats[s] = (distances[s], chemin)
+            chemin = reconstruire_chemin(pred, d, s)
+            résultats[s] = (dist[s], chemin)
 
     return résultats
 
-def mettre_à_jour_distances(M, distances, predecesseurs):
+
+def mettre_à_jour_distances(M, dist, pred):
     modification = False
     for u in range(len(M)):
         for v in range(len(M)):
-            if distances[u] != np.inf and distances[u] + poids(u, v, M) < distances[v]:
-                distances[v] = distances[u] + poids(u, v, M)
-                predecesseurs[v] = u
+            if dist[u] != np.inf and dist[u] + poids(u, v, M) < dist[v]:
+                dist[v] = dist[u] + poids(u, v, M)
+                pred[v] = u
                 modification = True
     return modification
 
-def cycle_poids_négatif(M, distances):
+def cycle_poids_négatif(M, dist):
     for u in range(len(M)):
         for v in range(len(M)):
-            if distances[u] != np.inf and distances[u] + poids(u, v, M) < distances[v]:
+            if dist[u] != np.inf and dist[u] + poids(u, v, M) < dist[v]:
                 return True
     return False
 
-def reconstruire_chemin(predecesseurs, départ, final):
+def reconstruire_chemin(pred, départ, final):
     chemin = []
     noeud_actuel = final
     while noeud_actuel != départ:
         chemin.insert(0, noeud_actuel)
-        noeud_actuel = predecesseurs[noeud_actuel]
+        noeud_actuel = pred[noeud_actuel]
     chemin.insert(0, départ)
     return chemin
