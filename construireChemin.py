@@ -11,7 +11,10 @@ def cheminExiste(matrice, chemin):
             return False
     return True
 
-def construireChemin(matrice, chemin):
+import matplotlib.pyplot as plt
+import networkx as nx
+
+def construireChemin(matrice, chemin: list):
     # les codes sont identique a ceux de la fonction construireGraphe
     if cg.estSymetrique(matrice):
         G = nx.Graph()
@@ -34,9 +37,13 @@ def construireChemin(matrice, chemin):
     else:
         # Coloration en rouge du chemin
         edges = [(chemin[i], chemin[i + 1]) for i in range(len(chemin) - 1)]
-        nx.draw_networkx_edges(G, positions, edgelist=edges, edge_color='r', width=2)
+        nx.draw_networkx_edges(G, positions, edgelist=edges, edge_color='red', width=2, alpha=1)
 
         plt.show()
         
-M = gm.graphe(5, 0, 20)
+M = [[0, 0, 5, 2, 3], 
+      [1, 0, 0, 0, 0], 
+      [0, 0, 0, 0, 0], 
+      [0, 0, 0, 0, 4], 
+      [0, 3, 0, 0, 2]]
 construireChemin(M, Dijkstra(M, 0))
