@@ -13,7 +13,7 @@ def TempsDij(n):
     return tempsExecution
 
 # retourne le temps de calcul de l'algorithme de Bellman-Ford
-def TempsBF(n, ordre='aleatoire'):
+def TempsBF(n, ordre='hasard'):
     M = gm.graphe(n, 1, 50)
     debut = time.time()
     for i in range(n):
@@ -27,4 +27,4 @@ def TempsBF(n, ordre='aleatoire'):
 print(TempsDij(100))
 print(TempsBF(100, 'largeur'))
 print(TempsBF(100, 'profondeur'))
-print(TempsBF(100, 'aleatoire'))
+print(TempsBF(100, 'hasard'))
