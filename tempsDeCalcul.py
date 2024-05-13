@@ -22,7 +22,6 @@ def TempsBF(n, ordre='hasard'):
     tempsExecution = fin - debut
     return tempsExecution
     
-
 # Test de la fonction TempsDij
 print(TempsDij(100))
 print(TempsBF(100, 'largeur'))
