@@ -38,7 +38,6 @@ def construireGraphe(matrice):
     plt.show()   
     
 # Test de la fonction construireGraphe
-M = gm.graphe(5, 1, 20)
 M1 = [[0, 1, 2, 3, 4], 
       [1, 0, 5, 6, 7], 
       [2, 5, 0, 8, 9], 
