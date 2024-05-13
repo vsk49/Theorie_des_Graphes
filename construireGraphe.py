@@ -39,4 +39,5 @@ def construireGraphe(matrice):
     
 # Test de la fonction construireGraphe
 M = gm.graphe(5, 1, 20)
+print(M)
 construireGraphe(M)   
