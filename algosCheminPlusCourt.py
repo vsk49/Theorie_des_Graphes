@@ -40,7 +40,7 @@ def Dijkstra(M, d):
 def poids(u, v, M):
     return M[u][v]
 
-def BellmanFord(M, d, ordre='hasard'):
+def BellmanFord(M, d, ordre='largeur'):
     dist = {v : np.inf for v in range(len(M))}
     dist[d] = 0
     pred = {v : -1 for v in range(len(M))}
@@ -65,11 +65,11 @@ def BellmanFord(M, d, ordre='hasard'):
         if not modification:
             break 
 
-    print(f"Number of iterations: {iterations}")
+    # print(f"Number of iterations: {iterations}")
 
     # Verification des cycles poids negatifs
-    if cycle_poids_négatif(M, dist):
-        print("Cycle poids negatif detecte")
+    # if cycle_poids_négatif(M, dist):
+    #   print("Cycle poids negatif detecte")
 
     # construire les results
     résultats = {}
@@ -108,3 +108,14 @@ def reconstruire_chemin(pred, départ, final):
         noeud_actuel = pred[noeud_actuel]
     chemin.insert(0, départ)
     return chemin
+
+# EXEMPLE / TEST FONCTION
+M = [[0, 0, 5, 2, 3], 
+     [1, 0, 0, 0, 0], 
+     [0, 0, 0, 0, 3], 
+     [0, 0, 0, 0, 4], 
+     [0, 3, 0, 0, 2]]
+print(Dijkstra(M, 0))
+print(BellmanFord(M, 0, 'largeur'))
+print(BellmanFord(M, 0, 'profondeur'))
+print(BellmanFord(M, 0, 'hasard'))
