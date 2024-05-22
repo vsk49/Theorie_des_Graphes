@@ -13,7 +13,7 @@ def TempsDij(n):
     return (end - start) / n  # return the average time
 
 # retourne le temps de calcul de l'algorithme de Bellman-Ford
-def TempsBF(n, ordre='hasard'):
+def TempsBF(n, ordre):
     M = gm.graphe(n, 1, 200)
     debut = time.time()
     for i in range(n):
@@ -23,10 +23,10 @@ def TempsBF(n, ordre='hasard'):
     return tempsExecution
     
 # Test de la fonction TempsDij
-print(TempsDij(100))
+# print(TempsDij(100))
 print(TempsBF(100, 'largeur'))
 print(TempsBF(100, 'profondeur'))
-print(TempsBF(100, 'hasard'))
+# print(TempsBF(100, 'hasard'))
 
 # Tracer les courbes de temps de calcul
 def tracerCourbes():
@@ -46,4 +46,4 @@ def tracerCourbes():
     plt.legend()
     plt.show()
     
-tracerCourbes()
+# tracerCourbes()
