@@ -71,11 +71,11 @@ def BellmanFord(M, d, ordre='largeur'):
 		if not modification:
 			break 
 
-	# print(f"Number of iterations: {iterations}")
+	print(f"Number of iterations: {iterations}")
 
 	# Verification des cycles poids negatifs
-	# if cycle_poids_négatif(M, dist):
-	#   print("Cycle poids negatif detecte")
+	if cycle_poids_négatif(M, dist):
+		print("Cycle poids negatif detecte")
 
 	# construire les results
 	résultats = {}
@@ -87,7 +87,6 @@ def BellmanFord(M, d, ordre='largeur'):
 			résultats[s] = (dist[s], chemin)
 
 	return résultats
-
 
 def mettre_à_jour_distances(M, dist, pred):
 	modification = False
@@ -122,7 +121,7 @@ M = [[1, 2, np.inf, 7],
 	 [5, 4, 3, 2], 
 	 [6, np.inf, np.inf, 6]]
 # print(Dijkstra(M, 0))
-# print(BellmanFord(M, 0, 'largeur'))
-# print(BellmanFord(M, 0, 'profondeur'))
-# print(BellmanFord(M, 0, 'hasard'))
+print(BellmanFord(M, 0, 'largeur'))
+print(BellmanFord(M, 0, 'profondeur'))
+print(BellmanFord(M, 0, 'hasard'))
 

@@ -6,19 +6,21 @@ import time
 
 # retourne le temps de calcul de l'algorithme de Dijkstra
 def TempsDij(n):
-    M = gm.graphe(n, 1, 200)
+    # M = gm.graphe(n, 1, 200)
+    N = gm.graphe2(n, 0.4, 1, 200)
     debut = time.time()
     for i in range(n):
-        acpc.Dijkstra(M, i)
+        acpc.Dijkstra(N, i)
     fin = time.time()
     return fin - debut
 
 # retourne le temps de calcul de l'algorithme de Bellman-Ford
 def TempsBF(n, ordre='largeur'):
-    M = gm.graphe(n, 1, 200)
+    # M = gm.graphe(n, 1, 200)
+    N = gm.graphe2(n, 0.4, 1, 200)
     debut = time.time()
     for i in range(n):
-        acpc.BellmanFord(M, i, ordre)
+        acpc.BellmanFord(N, i, ordre)
     fin = time.time()
     return fin - debut
     
