@@ -121,7 +121,7 @@ M = [[1, 2, np.inf, 7],
 	 [np.inf, np.inf, 1, np.inf], 
 	 [5, 4, 3, 2], 
 	 [6, np.inf, np.inf, 6]]
-print(Dijkstra(M, 0))
+# print(Dijkstra(M, 0))
 # print(BellmanFord(M, 0, 'largeur'))
 # print(BellmanFord(M, 0, 'profondeur'))
 # print(BellmanFord(M, 0, 'hasard'))

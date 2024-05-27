@@ -6,27 +6,27 @@ import time
 # retourne le temps de calcul de l'algorithme de Dijkstra
 def TempsDij(n):
     M = gm.graphe(n, 1, 200)
-    start = time.perf_counter()
+    debut = time.perf_counter()
     for _ in range(n):  # run the algorithm 100 times
         acpc.Dijkstra(M, 0)
-    end = time.perf_counter()
-    return (end - start) / n  # return the average time
+    fin = time.perf_counter()
+    return (fin - debut) / n  # return the average time
 
 # retourne le temps de calcul de l'algorithme de Bellman-Ford
-def TempsBF(n, ordre='hasard'):
+def TempsBF(n, ordre='largeur'):
     M = gm.graphe(n, 1, 200)
-    debut = time.time()
-    for i in range(n):
-        acpc.BellmanFord(M, i, ordre)
-    fin = time.time()
-    tempsExecution = fin - debut
-    return tempsExecution
+    debut = time.perf_counter()
+    for _ in range(n):
+        acpc.BellmanFord(M, 0, ordre)
+    fin = time.perf_counter()
+    return (fin - debut) / n
     
 # Test de la fonction TempsDij
 print(TempsDij(100))
+# Test de la fonction TempsBF en 3 variants
 print(TempsBF(100, 'largeur'))
-print(TempsBF(100, 'profondeur'))
-print(TempsBF(100, 'hasard'))
+# print(TempsBF(100, 'profondeur'))
+# print(TempsBF(100, 'hasard'))
 
 # Tracer les courbes de temps de calcul
 def tracerCourbes():
