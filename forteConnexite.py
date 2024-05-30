@@ -45,7 +45,9 @@ def seuil(n):
     while test_stat_fc2(n, p) >= 0.99:
         p -= 0.1
     return p
-        
+
+"""        
 print(trouver_n())
 print(test_stat_fc2(10, 0.4))
 print(seuil(12))
+"""
