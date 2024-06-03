@@ -6,11 +6,11 @@ def fc(M):
     n = len(M)
     # utiliser le parcours profondeur pour verifier la forte connexite
     for i in range(n):
-        visited_edges = bf.parcour_profondeur(M, i)
+        arêtesVisitées = bf.parcour_profondeur(M, i)
         # mettre les noeuds visites dans un ensemble
-        visited_nodes = set(node for edge in visited_edges for node in edge)
-        # Si le nombre de noeuds < n, le graphe n'est pas fortement connexe
-        if len(visited_nodes) < n:
+        sommetsVisités = set(node for edge in arêtesVisitées for node in edge)
+        # S'il y a des sommets non visités, le graphe n'est pas fortement connexe
+        if len(sommetsVisités) < n:
             return False
     # sinon, le graphe est fortement connexe
     return True
