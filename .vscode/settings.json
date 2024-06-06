@@ -1,9 +1,9 @@
 {
     "python.analysis.typeCheckingMode": "basic",
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    // "[python]": {
+    //  "editor.defaultFormatter": "ms-python.black-formatter"
+    // },
+    // "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "source.organizeImports": "explicit"
