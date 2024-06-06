@@ -51,7 +51,6 @@ def Dijkstra(M, d):
 def poids(u, v, M):
     return M[u][v]
 
-
 def BellmanFord(M, d, ordre="largeur"):
     dist = {v: np.inf for v in range(len(M))}
     dist[d] = 0
@@ -113,7 +112,6 @@ def cycle_poids_négatif(M, dist):
                 return True
     return False
 
-
 def reconstruire_chemin(pred, départ, final):
     chemin = []
     noeud_actuel = final
@@ -127,43 +125,20 @@ def reconstruire_chemin(pred, départ, final):
 # EXEMPLE / TEST FONCTION
 
 M3 = np.array([
-    [15, 1, np.inf, np.inf, np.inf, np.inf, 11, 2, np.inf, np.inf, 17, np.inf, 4, np.inf, np.inf],
-    [np.inf, np.inf, 11, 9, np.inf, np.inf, np.inf, np.inf, np.inf, 15, np.inf, np.inf, np.inf, 3, np.inf],
-    [np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, 16, np.inf, np.inf, np.inf, 8, np.inf, np.inf, 14],
-    [np.inf, 3, np.inf, np.inf, np.inf, 13, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf],
-    [np.inf, np.inf, np.inf, np.inf, 4, np.inf, 9, np.inf, np.inf, 11, np.inf, 13, np.inf, 15, np.inf],
-    [np.inf, np.inf, np.inf, np.inf, 15, np.inf, np.inf, np.inf, 14, 7, 19, np.inf, np.inf, np.inf, 1],
-    [7, np.inf, np.inf, 11, np.inf, 6, np.inf, np.inf, np.inf, np.inf, np.inf, 4, 18, 3, 20],
-    [np.inf, np.inf, np.inf, 1, 5, np.inf, 7, 13, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, 8],
-    [np.inf, np.inf, 1, 6, np.inf, 5, 17, np.inf, 18, 9, 4, np.inf, 11, np.inf, np.inf],
-    [8, 11, np.inf, np.inf, 15, np.inf, np.inf, 13, np.inf, np.inf, np.inf, np.inf, 12, np.inf, 9]
-])
-N3 = np.array([
-    [11, 2, np.inf, np.inf, np.inf, 1, np.inf, 16, np.inf, 6, np.inf, np.inf, np.inf, np.inf, np.inf],
-    [np.inf, np.inf, -7, 1, 3, 6, np.inf, np.inf, 10, np.inf, 17, np.inf, np.inf, 15, np.inf],
-    [15, np.inf, np.inf, np.inf, 6, np.inf, np.inf, 10, np.inf, 8, np.inf, np.inf, 19, np.inf, 9],
-    [np.inf, np.inf, np.inf, np.inf, 12, 17, np.inf, np.inf, np.inf, np.inf, 5, np.inf, 16, 13, np.inf],
-    [np.inf, np.inf, 15, np.inf, 4, np.inf, 9, np.inf, np.inf, 11, np.inf, 13, np.inf, 15, np.inf],
-    [np.inf, 9, 8, np.inf, np.inf, np.inf, np.inf, np.inf, 14, -7, 19, 16, 4, 8, 3],
-    [17, np.inf, np.inf, 11, np.inf, 6, np.inf, np.inf, np.inf, 10, 14, 5, 18, 3, 20],
-    [np.inf, np.inf, 3, 1, 5, np.inf, -7, 13, np.inf, np.inf, np.inf, np.inf, 6, np.inf, 8],
-    [np.inf, np.inf, 1, 6, np.inf, 5, 17, np.inf, 18, 9, 4, np.inf, 11, np.inf, np.inf],
-    [8, 11, np.inf, np.inf, 15, np.inf, np.inf, 13, np.inf, np.inf, np.inf, 12, np.inf, -7, 9]
-])
-P3 = np.array([
-    [1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0],
-    [1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0],
-    [0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
-    [1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0],
-    [0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0],
-    [1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1],
-    [0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0],
-    [0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1],
-    [1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0]
+    [15, 1, np.inf, np.inf, np.inf, np.inf, 11, 2, np.inf, np.inf],
+    [np.inf, np.inf, 11, 9, np.inf, np.inf, np.inf, np.inf, np.inf, 15],
+    [np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, 16, np.inf, np.inf],
+    [np.inf, 3, np.inf, np.inf, np.inf, 13, np.inf, np.inf, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, np.inf, 4, np.inf, 9, np.inf, np.inf, 11],
+    [np.inf, np.inf, np.inf, np.inf, 15, np.inf, np.inf, np.inf, 14, -7],
+    [-7, np.inf, np.inf, 11, np.inf, 6, np.inf, np.inf, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, 1, 5, np.inf, -7, 13, np.inf, np.inf],
+    [np.inf, np.inf, 1, 6, np.inf, 5, 17, np.inf, 18, 9],
+    [8, 11, np.inf, np.inf, 15, np.inf, np.inf, 13, np.inf, np.inf]
 ])
 
-# print(Dijkstra(M3, 5))
-print(BellmanFord(N3, 3, "largeur"))
-print(BellmanFord(N3, 3, "profondeur"))
-print(BellmanFord(N3, 3, "hasard"))
+
+# print(Dijkstra(N3, 5))
+print(BellmanFord(M3, 6, "largeur"))
+print(BellmanFord(M3, 6, "profondeur"))
+print(BellmanFord(M3, 6, "hasard"))
