@@ -47,10 +47,6 @@ def Dijkstra(M, d):
 
     return cheminTrouve
 
-
-def poids(u, v, M):
-    return M[u][v]
-
 def BellmanFord(M, d, ordre="largeur"):
     dist = {v: np.inf for v in range(len(M))}
     dist[d] = 0
@@ -66,12 +62,7 @@ def BellmanFord(M, d, ordre="largeur"):
     # Iterations pour la mise-a-jour des distances
     iterations = 0
     for _ in range(len(M)):
-        modification = False
-        for u, v in edges:
-            if dist[u] != np.inf and dist[u] + M[u][v] < dist[v]:
-                dist[v] = dist[u] + M[u][v]
-                pred[v] = u
-                modification = True
+        modification = mettre_à_jour_distances(M, dist, pred, edges)
         iterations += 1
         if not modification:
             break
@@ -79,8 +70,8 @@ def BellmanFord(M, d, ordre="largeur"):
     print(f"Number of iterations: {iterations}")
 
     # Verification des cycles poids negatifs
-    if cycle_poids_négatif(M, dist):
-        print("Cycle poids negatif detecte")
+    if cycle_poids_négatif(M, dist, edges):
+        return "Cycle de poids négatif trouvé dans le graphe."
 
     # construire les results
     résultats = {}
@@ -93,23 +84,19 @@ def BellmanFord(M, d, ordre="largeur"):
 
     return résultats
 
-
-def mettre_à_jour_distances(M, dist, pred):
+def mettre_à_jour_distances(M, dist, pred, edges):
     modification = False
-    for u in range(len(M)):
-        for v in range(len(M)):
-            if dist[u] != np.inf and dist[u] + poids(u, v, M) < dist[v]:
-                dist[v] = dist[u] + poids(u, v, M)
-                pred[v] = u
-                modification = True
+    for (u, v) in edges:
+        if dist[u] != np.inf and M[u][v] != np.inf and dist[u] + M[u][v] < dist[v]:
+            dist[v] = dist[u] + M[u][v]
+            pred[v] = u
+            modification = True
     return modification
 
-
-def cycle_poids_négatif(M, dist):
-    for u in range(len(M)):
-        for v in range(len(M)):
-            if dist[u] != np.inf and dist[u] + poids(u, v, M) < dist[v]:
-                return True
+def cycle_poids_négatif(M, dist, edges):
+    for (u, v) in edges:
+        if dist[u] != np.inf and M[u][v] != np.inf and dist[u] + M[u][v] < dist[v]:
+            return True
     return False
 
 def reconstruire_chemin(pred, départ, final):
@@ -120,7 +107,6 @@ def reconstruire_chemin(pred, départ, final):
         noeud_actuel = pred[noeud_actuel]
     chemin.insert(0, départ)
     return chemin
-
 
 # EXEMPLE / TEST FONCTION
 
@@ -136,9 +122,21 @@ M3 = np.array([
     [np.inf, np.inf, 1, 6, np.inf, 5, 17, np.inf, 18, 9],
     [8, 11, np.inf, np.inf, 15, np.inf, np.inf, 13, np.inf, np.inf]
 ])
-
-
+M4 = [
+    [np.inf, -1, 2, np.inf, -3],
+    [np.inf, 1, np.inf, 3, 4],
+    [5, np.inf, -5, np.inf, np.inf],
+    [np.inf, -2, np.inf, -4, 6],
+    [7, 8, np.inf, -9, np.inf]
+]
+M3_no_cycle = np.array([
+    [np.inf, 1, np.inf, np.inf, -1],
+    [np.inf, np.inf, 2, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, 3, np.inf],
+    [2, np.inf, np.inf, np.inf, -2],
+    [np.inf, 4, np.inf, 5, np.inf]
+])
 # print(Dijkstra(N3, 5))
+print(BellmanFord(M3_no_cycle, 2, "largeur"))
+print(BellmanFord(M4, 4, "largeur"))
 print(BellmanFord(M3, 6, "largeur"))
-print(BellmanFord(M3, 6, "profondeur"))
-print(BellmanFord(M3, 6, "hasard"))

@@ -8,11 +8,11 @@ def fc(M):
     n = len(M)
     # utiliser le parcours profondeur pour verifier la forte connexite
     for i in range(n):
-        visited_edges = bf.parcour_profondeur(M, i)
+        flechesVisites = bf.parcour_profondeur(M, i)
         # mettre les noeuds visites dans un ensemble
-        visited_nodes = set(node for edge in visited_edges for node in edge)
+        sommetsVisites = set(node for edge in flechesVisites for node in edge)
         # Si le nombre de noeuds < n, le graphe n'est pas fortement connexe
-        if len(visited_nodes) < n:
+        if len(sommetsVisites) < n:
             return False
     # sinon, le graphe est fortement connexe
     return True
@@ -20,41 +20,40 @@ def fc(M):
 def test_stat_fc(n):
     nbGraphesFortConnexes = 0
     nbGraphs = 300
-    for i in range(nbGraphs):
-        M = gm.graphe(n, 0, 1)
+    for _ in range(nbGraphs):
+        M = gm.graphe(n, 1, 10)
         if fc(M):
             nbGraphesFortConnexes += 1
     return nbGraphesFortConnexes / nbGraphs
 
 def trouver_n():
     n = 1
-    while True:
-        if test_stat_fc(n) >= 0.99:
-            return n
+    while test_stat_fc(n) < 0.99:
         n += 1
+    return n
         
 def test_stat_fc2(n, p):
     nbGraphesFortConnexes = 0
     nbGraphs = 300
-    for i in range(nbGraphs):
+    for _ in range(nbGraphs):
         M = gm.graphe2(n, p, 1, 10)
         if fc(M):
             nbGraphesFortConnexes += 1
     return nbGraphesFortConnexes / nbGraphs
 
 def seuil(n):
-    p = 1
-    while test_stat_fc2(n, p) >= 0.99:
-        p -= 0.1
+    p = 0.01
+    while test_stat_fc2(n, p) < 0.99:
+        p += 0.01
     return p
 
 # TESTS FONCTIONS
-print(trouver_n())
-"""      
+print(test_stat_fc(10))
 print(trouver_n())
 print(test_stat_fc2(10, 0.4))
 print(seuil(12))
 print(seuil(18))
+
 P3 = np.array([
     [0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1],
     [0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
@@ -75,5 +74,35 @@ P3 = np.array([
     [0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0],
     [0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0]
 ])
-print(fc(P3))
+# print(fc(P3))
+"""
+M3 = np.array([
+    [15, 1, np.inf, np.inf, np.inf, np.inf, 11, 2, np.inf, np.inf],
+    [np.inf, np.inf, 11, 9, np.inf, np.inf, np.inf, np.inf, np.inf, 15],
+    [np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, 16, np.inf, np.inf],
+    [np.inf, 3, np.inf, np.inf, np.inf, 13, np.inf, np.inf, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, np.inf, 4, np.inf, 9, np.inf, np.inf, 11],
+    [np.inf, np.inf, np.inf, np.inf, 15, np.inf, np.inf, np.inf, 14, -7],
+    [-7, np.inf, np.inf, 11, np.inf, 6, np.inf, np.inf, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, 1, 5, np.inf, -7, 13, np.inf, np.inf],
+    [np.inf, np.inf, 1, 6, np.inf, 5, 17, np.inf, 18, 9],
+    [8, 11, np.inf, np.inf, 15, np.inf, np.inf, 13, np.inf, np.inf]
+])
+M4 = [
+    [np.inf, -1, 2, np.inf, -3],
+    [np.inf, 1, np.inf, 3, 4],
+    [5, np.inf, -5, np.inf, np.inf],
+    [np.inf, -2, np.inf, -4, 6],
+    [7, 8, np.inf, -9, np.inf]
+]
+M3_no_cycle = np.array([
+    [np.inf, 1, np.inf, np.inf, -1],
+    [np.inf, np.inf, 2, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, 3, np.inf],
+    [2, np.inf, np.inf, np.inf, -2],
+    [np.inf, 4, np.inf, 5, np.inf]
+])
+print(fc(M3))
+print(fc(M4))
+print(fc(M3_no_cycle))
 """
