@@ -48,12 +48,12 @@ def seuil(n):
     return p
 
 # TESTS FONCTIONS
+"""
 print(test_stat_fc(10))
 print(trouver_n())
 print(test_stat_fc2(10, 0.4))
 print(seuil(12))
 print(seuil(18))
-
 P3 = np.array([
     [0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1],
     [0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
@@ -74,8 +74,7 @@ P3 = np.array([
     [0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0],
     [0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0]
 ])
-# print(fc(P3))
-"""
+print(fc(P3))
 M3 = np.array([
     [15, 1, np.inf, np.inf, np.inf, np.inf, 11, 2, np.inf, np.inf],
     [np.inf, np.inf, 11, 9, np.inf, np.inf, np.inf, np.inf, np.inf, 15],
