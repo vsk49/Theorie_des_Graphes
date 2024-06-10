@@ -109,6 +109,7 @@ def reconstruire_chemin(pred, départ, final):
     return chemin
 
 # EXEMPLE / TEST FONCTION
+"""
 N3 = np.array([
     [15, 1, np.inf, np.inf, np.inf, np.inf, 11, 2, np.inf, np.inf],
     [np.inf, np.inf, 11, 9, np.inf, np.inf, np.inf, np.inf, np.inf, 15],
@@ -166,3 +167,14 @@ M6 = np.array([
 # print(BellmanFord(M3, 1, "hasard"))
 # print(BellmanFord(M3, 1, "largeur"))
 # print(BellmanFord(M3, 1, "profondeur"))
+"""
+
+# Partiel
+from matrices import M3, N3, P3
+
+# print(Dijkstra(M3, 5))
+# print(Dijkstra(M3, 3))
+# print(BellmanFord(M3, 6, "hasard"))
+# print(BellmanFord(M3, 6, "largeur"))
+# print(BellmanFord(M3, 6, "profondeur"))
+# print(BellmanFord(N3, 1, "largeur"))

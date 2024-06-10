@@ -3,7 +3,9 @@ import numpy as np
 import bellmanFordVariants as bf
 import genererMatrice as gm
 
+# from nomFichier import nomVariable
 
+# verifier si une matrice est fortement connexe
 def fc(M):
     n = len(M)
     # utiliser le parcours profondeur pour verifier la forte connexite
@@ -17,6 +19,7 @@ def fc(M):
     # sinon, le graphe est fortement connexe
     return True
 
+# retourne le pourcentage de graphes fortement connexes (50% de fleches)
 def test_stat_fc(n):
     nbGraphesFortConnexes = 0
     nbGraphs = 300
@@ -27,21 +30,25 @@ def test_stat_fc(n):
             nbGraphesFortConnexes += 1
     return nbGraphesFortConnexes / nbGraphs
 
+# retourne la taille minimale de graphe fortement connexe
 def trouver_n():
     n = 1
     while test_stat_fc(n) < 0.99:
         n += 1
     return n
         
+# retourne le pourcentage de graphes fortement connexes (p% de fleches)
 def test_stat_fc2(n, p):
     nbGraphesFortConnexes = 0
     nbGraphs = 300
     for _ in range(nbGraphs):
         M = gm.graphe2(n, p, 1, 10)
-        if fc(M):
+        M_Reduire = bf.conversion(M)
+        if fc(M_Reduire):
             nbGraphesFortConnexes += 1
     return nbGraphesFortConnexes / nbGraphs
 
+# retourne le seuil de p pour avoir 99% de graphes fortement connexes
 def seuil(n):
     p = 0.01
     while test_stat_fc2(n, p) < 0.99:
@@ -54,6 +61,7 @@ def seuil(n):
 # print(test_stat_fc2(10, 0.4))
 # print(seuil(12))
 # print(seuil(18))
+"""
 P3 = np.array([
     [0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1],
     [0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
@@ -74,7 +82,7 @@ P3 = np.array([
     [0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0],
     [0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0]
 ])
-print(fc(P3))
+# print(fc(P3))
 M3 = np.array([
     [15, 1, np.inf, np.inf, np.inf, np.inf, 11, 2, np.inf, np.inf],
     [np.inf, np.inf, 11, 9, np.inf, np.inf, np.inf, np.inf, np.inf, 15],
@@ -104,3 +112,11 @@ M3_no_cycle = np.array([
 # print(fc(M3))
 # print(fc(M4))
 # print(fc(M3_no_cycle))
+"""
+
+# Partiel
+from matrices import P3
+
+# print(trouver_n())
+# print(seuil(18))
+# print(fc(P3))
