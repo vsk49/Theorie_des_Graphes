@@ -109,7 +109,18 @@ def reconstruire_chemin(pred, départ, final):
     return chemin
 
 # EXEMPLE / TEST FONCTION
-
+N3 = np.array([
+    [15, 1, np.inf, np.inf, np.inf, np.inf, 11, 2, np.inf, np.inf],
+    [np.inf, np.inf, 11, 9, np.inf, np.inf, np.inf, np.inf, np.inf, 15],
+    [np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, 16, np.inf, np.inf],
+    [np.inf, 3, np.inf, np.inf, np.inf, 13, np.inf, np.inf, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, np.inf, 4, np.inf, 9, np.inf, np.inf, 11],
+    [np.inf, np.inf, np.inf, np.inf, 15, np.inf, np.inf, np.inf, 14, 7],
+    [7, np.inf, np.inf, 11, np.inf, 6, np.inf, np.inf, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, 1, 5, np.inf, 7, 13, np.inf, np.inf],
+    [np.inf, np.inf, 1, 6, np.inf, 5, 17, np.inf, 18, 9],
+    [8, 11, np.inf, np.inf, 15, np.inf, np.inf, 13, np.inf, np.inf]
+])
 M3 = np.array([
     [15, 1, np.inf, np.inf, np.inf, np.inf, 11, 2, np.inf, np.inf],
     [np.inf, np.inf, 11, 9, np.inf, np.inf, np.inf, np.inf, np.inf, 15],
@@ -136,7 +147,22 @@ M3_no_cycle = np.array([
     [2, np.inf, np.inf, np.inf, -2],
     [np.inf, 4, np.inf, 5, np.inf]
 ])
+M6 = np.array([
+    [np.inf, 2, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf],
+    [np.inf, np.inf, -3, np.inf, np.inf, 5, np.inf, np.inf, np.inf, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, 7, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, 1, np.inf, np.inf, np.inf, np.inf],
+    [5, np.inf, np.inf, np.inf, np.inf, -2, np.inf, np.inf, np.inf, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, 3, np.inf, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, 4, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, -1, np.inf],
+    [np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, 6],
+    [np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf],
+    [np.inf, np.inf, np.inf, np.inf, 8, np.inf, np.inf, np.inf, np.inf, np.inf, np.inf]
+])
+
 # print(Dijkstra(N3, 5))
-print(BellmanFord(M3_no_cycle, 2, "largeur"))
-print(BellmanFord(M4, 4, "largeur"))
-print(BellmanFord(M3, 6, "largeur"))
+# print(Dijkstra(N3, 3))
+# print(BellmanFord(M3, 1, "hasard"))
+# print(BellmanFord(M3, 1, "largeur"))
+# print(BellmanFord(M3, 1, "profondeur"))
