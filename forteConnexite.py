@@ -22,7 +22,8 @@ def test_stat_fc(n):
     nbGraphs = 300
     for _ in range(nbGraphs):
         M = gm.graphe(n, 1, 10)
-        if fc(M):
+        M_Reduire = bf.conversion(M)
+        if fc(M_Reduire):
             nbGraphesFortConnexes += 1
     return nbGraphesFortConnexes / nbGraphs
 
@@ -48,12 +49,11 @@ def seuil(n):
     return p
 
 # TESTS FONCTIONS
-"""
-print(test_stat_fc(10))
-print(trouver_n())
-print(test_stat_fc2(10, 0.4))
-print(seuil(12))
-print(seuil(18))
+# print(test_stat_fc(10))
+# print(trouver_n())
+# print(test_stat_fc2(10, 0.4))
+# print(seuil(12))
+# print(seuil(18))
 P3 = np.array([
     [0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1],
     [0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
@@ -101,7 +101,6 @@ M3_no_cycle = np.array([
     [2, np.inf, np.inf, np.inf, -2],
     [np.inf, 4, np.inf, 5, np.inf]
 ])
-print(fc(M3))
-print(fc(M4))
-print(fc(M3_no_cycle))
-"""
+# print(fc(M3))
+# print(fc(M4))
+# print(fc(M3_no_cycle))
